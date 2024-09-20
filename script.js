@@ -128,21 +128,21 @@ function rand(max) {
           var ny = pos.y + modDir[direction].y;
   
           if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-            //Check if the tile is already visited
+            //check if tile is already visited 
             if (!mazeMap[nx][ny].visited) {
-              //Carve through walls from this tile to next
+              //from one tile to other one 
               mazeMap[pos.x][pos.y][direction] = true;
               mazeMap[nx][ny][modDir[direction].o] = true;
   
-              //Set Currentcell as next cells Prior visited
+            
               mazeMap[nx][ny].priorPos = pos;
-              //Update Cell position to newly visited location
+             
               pos = {
                 x: nx,
                 y: ny
               };
               cellsVisited++;
-              //Recursively call this method on the next tile
+           
               move = true;
               break;
             }
@@ -151,7 +151,7 @@ function rand(max) {
   
         if (!move) {
           //  If it failed to find a direction,
-          //  move the current position back to the prior cell and Recall the method.
+          //  move the current position back to the prior cell and Recall the method. JAMES OKAY NA TO HA
           pos = mazeMap[pos.x][pos.y].priorPos;
         }
         if (numCells == cellsVisited) {
